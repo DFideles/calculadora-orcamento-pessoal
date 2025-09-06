@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Orçamento Pessoal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>💰 Calculadora de Orçamento Pessoal</h1>
+
+  <form action="/addDespesa" method="post">
+    <input type="text" name="descricao" placeholder="Descrição" required>
+    <input type="number" step="0.01" name="valor" placeholder="Valor" required>
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <h2>Despesas Registradas</h2>
+  <ul id="lista"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
