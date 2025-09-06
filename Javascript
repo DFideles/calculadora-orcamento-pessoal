@@ -1,0 +1,35 @@
+import static spark.Spark.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        port(4567);
+
+        // Lista de despesas (simples, apenas na memória)
+        List<String> despesas = new ArrayList<>();
+
+        // Rota principal
+        get("/", (req, res) -> {
+            res.redirect("/index.html");
+            return null;
+        });
+
+        // Adicionar despesa
+        post("/addDespesa", (req, res) -> {
+            String descricao = req.queryParams("descricao");
+            String valor = req.queryParams("valor");
+            despesas.add(descricao + " - R$" + valor);
+            res.redirect("/index.html");
+            return null;
+        });
+
+        // Listar despesas
+        get("/listarDespesas", (req, res) -> {
+            StringBuilder lista = new StringBuilder();
+            for (String d : despesas) {
+                lista.append("<li>").append(d).append("</li>");
+            }
+            return lista.toString();
+        });
+    }
+}
